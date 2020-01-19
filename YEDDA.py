@@ -32,15 +32,7 @@ class Example(Frame):
         self.recommendFlag = True
         self.history = deque(maxlen=20)
         self.currentContent = deque(maxlen=1)
-        self.pressCommand = {'a':"Artifical",
-                             'b':"Event",
-                             'c':"Fin-Concept",
-                             'd':"Location",
-                             'e':"Organization",
-                             'f':"Person",
-                             'g':"Sector",
-                             'h':"Other"
-                             }
+        self.pressCommand = {"k": "Keyword", "m": "Method", "e": "Event", "o": "Organization", "d": "Device", "t": "Target", "p": "Person", "h": "Other"}
         self.allKey = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         self.controlCommand = {'q':"unTag", 'ctrl+z':'undo'}
         self.labelEntryList = []
@@ -54,7 +46,7 @@ class Example(Frame):
         else:
             self.textRow = 20
         self.textColumn = 5
-        self.tagScheme = "BMES"
+        self.tagScheme = "BIO"
         self.onlyNP = False  ## for exporting sequence 
         self.keepRecommend = True
 
@@ -64,7 +56,7 @@ class Example(Frame):
         for example, if your data is segmentated Chinese (or English) with words seperated by a space, you need to set this flag as true
         if your data is Chinese without segmentation, you need to set this flag as False
         '''
-        self.seged = True  ## False for non-segmentated Chinese, True for English or Segmented Chinese
+        self.seged = False  ## False for non-segmentated Chinese, True for English or Segmented Chinese
         self.configFile = "configs/default.config"
         self.entityRe = r'\[\@.*?\#.*?\*\](?!\#)'
         self.insideNestEntityRe = r'\[\@\[\@(?!\[\@).*?\#.*?\*\]\#'
